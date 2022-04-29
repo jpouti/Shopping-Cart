@@ -1,11 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import { Outlet, Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import Shop from "./components/Shop";
+import NavHeader from './components/NavHeader'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-    Shopping cart
-    </div>
+    <>
+      <NavHeader/>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
+      </Routes>
+    </>
   );
 }
 
