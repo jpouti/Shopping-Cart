@@ -3,25 +3,29 @@ import { useState } from "react";
 const ItemCard = (props) => {
     const [productCount, setProductCount] = useState(0);
     const item = props.item;
+    const data = (item, counts) => {
+        item.count = counts;
+        return item;
+    }
     return (
         <div>
-            <div className="border-2 border-black border-solid p-4 rounded">
+            <div className="border-2 border-sky-600 border-solid p-4 rounded bg-sky-50">
                 <div className="flex justify-between items-center">
                     <h3>{item.name}</h3>
                     <h3>{item.price}</h3>
                 </div>
-                <div className="p-12 mt-4 mb-4 border-2 border-black border-solid rounded">
+                <div className="p-12 mt-4 mb-4 border-2 border-sky-600 border-solid rounded bg-stone-50">
                     Inset product picture here
                 </div>
                 <form>
                     <div className="flex gap-8">
                         <label htmlFor="item">Amount of items</label>
-                        <button type="button" onClick={() => {
+                        <button id="reduceItem" type="button" onClick={() => {
                             setProductCount(Math.max(productCount - 1, 0))
                         }}>-</button>
-                        <button type="button" onClick={() => setProductCount(parseInt(productCount) + 1)}>+</button>
+                        <button id="addItem" type="button" onClick={() => setProductCount(parseInt(productCount) + 1)}>+</button>
                     </div>
-                    <input className="p-1"
+                    <input className="p-1 bg-stone-50"
                     style={{width: '150px'}}
                     type="number"
                     min="0"
@@ -30,7 +34,7 @@ const ItemCard = (props) => {
                     onChange={e => setProductCount(e.target.value)}
                     />
                 </form>
-                <button type="button" onClick={() => props.addToCart(productCount, setProductCount)}>Add To Cart</button>
+                <button id="submitItems" type="button" onClick={() => props.addToCart(productCount, setProductCount, data(item, productCount) )}>Add To Cart</button>
             </div>
         </div>
     )

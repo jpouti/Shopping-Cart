@@ -1,30 +1,37 @@
 import NavHeader from "./NavHeader";
 import Badge from '@mui/material/Badge';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import ItemCard from './ItemCard';
 import { rods, reels, bait } from './ShopItems.js'
+import { Link, useNavigate } from "react-router-dom";
+import ShoppingCart from "./ShoppingCart";
 
 const Shop = () => {
 
     const [itemsCount, setItemsCount] = useState(0);
+    const [cart, setCart] = useState([]);
 
-    const addToCart = (productCount, setProductCount) => {
-        setItemsCount(itemsCount + productCount);
+
+    const addToCart = (productCount, setProductCount, item) => {
+        setItemsCount(itemsCount + parseInt(productCount));
         setProductCount(0);
-    }
+        setCart([...cart, item]);
+    };
 
     return (
-        <div>
+        <div className="bg-stone-100 h-full">
             <NavHeader/>
             <div className="container flex justify-end items-center gap-2 max-w-full pr-20 lg:pr-60 py-3">
                 <Badge color="primary" badgeContent={itemsCount}>
                     <ShoppingCartIcon color="primary" />
                 </Badge>
-                <Button type="button">Shoping Cart</Button>
+                <Link to="/cart" state={cart}>
+                    <Button type="button">Shoping Cart</Button>
+                </Link>
             </div>
-            <div className=" mx-8 md:mx-16 lg:mx-48">
+            <div className=" mx-8 md:mx-16 lg:mx-48 text-sky-800 font-bold">
                 <legend className="pb-8">Welcome to the shop! </legend>
                 <h3 className="pb-4">Fishing rods:</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-8 lg:gap-20">
