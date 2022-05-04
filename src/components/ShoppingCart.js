@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import Shop from "./Shop";
 import NavHeader from "./NavHeader";
 import { useEffect, useState} from "react";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
@@ -21,7 +20,7 @@ const ShoppingCart = () => {
         let price = 0;
         items.map((item) => {
             price = price + (parseFloat(item.price) * parseFloat(item.count));
-        })
+        });
         setTotal(price);
     }
 

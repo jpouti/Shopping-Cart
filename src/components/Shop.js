@@ -1,12 +1,11 @@
 import NavHeader from "./NavHeader";
 import Badge from '@mui/material/Badge';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@mui/material";
 import ItemCard from './ItemCard';
 import { rods, reels, bait } from './ShopItems.js'
-import { Link, useNavigate } from "react-router-dom";
-import ShoppingCart from "./ShoppingCart";
+import { Link } from "react-router-dom";
 
 const Shop = () => {
 
@@ -31,7 +30,7 @@ const Shop = () => {
                     <Button type="button">Shoping Cart</Button>
                 </Link>
             </div>
-            <div className=" mx-8 md:mx-16 lg:mx-48 text-sky-800 font-bold">
+            <div className=" mx-8 md:mx-16 lg:mx-60 text-sky-800 font-bold">
                 <legend className="pb-8">Welcome to the shop! </legend>
                 <h3 className="pb-4">Fishing rods:</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-8 lg:gap-20">
